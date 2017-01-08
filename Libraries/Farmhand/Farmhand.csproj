@@ -22,8 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>..\..\Bin\Farmhand.XML</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -108,12 +107,21 @@
     <Compile Include="API\Dialogues\DialogueResultInformation.cs" />
     <Compile Include="API\Game.cs" />
     <Compile Include="API\Generic\ItemChancePair.cs" />
+    <Compile Include="API\Locations\DefaultMaps.cs" />
     <Compile Include="API\Locations\GameLocationExtensionMethods.cs" />
     <Compile Include="API\Locations\MapActionInformation.cs" />
+    <Compile Include="API\NPCs\Characteristics\BirthdaySeason.cs" />
+    <Compile Include="API\NPCs\Characteristics\Gender.cs" />
+    <Compile Include="API\NPCs\Characteristics\HomeRegion.cs" />
+    <Compile Include="API\NPCs\Characteristics\Manners.cs" />
+    <Compile Include="API\NPCs\Characteristics\Optimism.cs" />
+    <Compile Include="API\NPCs\Characteristics\SocialAttitude.cs" />
     <Compile Include="API\NPCs\Dialogues\DialogueEntry.cs" />
     <Compile Include="API\NPCs\Dialogues\DialogueInformation.cs" />
+    <Compile Include="API\NPCs\Characteristics\Direction.cs" />
     <Compile Include="API\NPCs\GiftTastes\GiftTastesInformation.cs" />
     <Compile Include="API\NPCs\NPC.cs" />
+    <Compile Include="API\NPCs\Characteristics\Age.cs" />
     <Compile Include="API\NPCs\NPCInformation.cs" />
     <Compile Include="API\NPCs\NpcUtility.cs" />
     <Compile Include="API\NPCs\Schedules\ScheduleCondition.cs" />
@@ -140,11 +148,14 @@
     <Compile Include="API\Pulse\Resource.cs" />
     <Compile Include="API\Serializer.cs" />
     <Compile Include="API\Shops\ShopInformation.cs" />
+    <Compile Include="API\Shops\Shops.cs" />
     <Compile Include="API\Shops\StockEntry.cs" />
+    <Compile Include="API\Shops\StockType.cs" />
     <Compile Include="API\Tools\Tool.cs" />
     <Compile Include="API\Tools\ToolInformation.cs" />
     <Compile Include="API\Tools\Weapon.cs" />
     <Compile Include="API\Tools\WeaponInformation.cs" />
+    <Compile Include="API\Tools\WeaponType.cs" />
     <Compile Include="API\Utilities\IdManager.cs" />
     <Compile Include="API\Generic\ItemQuantityPair.cs" />
     <Compile Include="API\Player\Player.cs" />
@@ -213,12 +224,15 @@
     <Compile Include="Events\Arguments\GlobalRoute\EventArgsGlobalRoute.cs" />
     <Compile Include="Events\Arguments\GlobalRoute\EventArgsGlobalRouteCancellable.cs" />
     <Compile Include="Events\Arguments\GlobalRoute\EventArgsGlobalRouteReturnable.cs" />
+    <Compile Include="Events\Arguments\GraphicsEvents\EventArgsChatBoxDraw.cs" />
     <Compile Include="Events\Arguments\GraphicsEvents\EventArgsClientSizeChanged.cs" />
     <Compile Include="Events\Arguments\LocationEvents\EventArgsLocationsChanged.cs" />
     <Compile Include="Events\Arguments\LocationEvents\EventArgsOnBeforeCheckAction.cs" />
     <Compile Include="Events\Arguments\LocationEvents\EventArgsOnCurrentLocationChanged.cs" />
     <Compile Include="Events\Arguments\LocationEvents\EventArgsGetMonsterForThisLevel.cs" />
     <Compile Include="Events\Arguments\LocationEvents\EventArgsOnBeforeWarp.cs" />
+    <Compile Include="Events\Arguments\MailEvents\EventArgsOpenedLetter.cs" />
+    <Compile Include="Events\Arguments\MailEvents\EventArgsOpenedMail.cs" />
     <Compile Include="Events\Arguments\MenuEvents\EventArgsOnMenuChanged.cs" />
     <Compile Include="Events\Arguments\PlayerEvents\EventArgsOnFarmerChanged.cs" />
     <Compile Include="Events\Arguments\PlayerEvents\EventArgsOnItemAddedToInventory.cs" />
@@ -236,6 +250,7 @@
     <Compile Include="Events\GraphicsEvents.cs" />
     <Compile Include="Events\EventEvents.cs" />
     <Compile Include="Events\LocationEvents.cs" />
+    <Compile Include="Events\MailEvents.cs" />
     <Compile Include="Events\MenuEvents.cs" />
     <Compile Include="Events\MineShaftEvents.cs" />
     <Compile Include="Events\PlayerEvents.cs" />
@@ -249,7 +264,13 @@
     <Compile Include="Extensibility\ExtensionManifest.cs" />
     <Compile Include="FarmhandConfig.cs" />
     <Compile Include="Helpers\ArgumentsHelper.cs" />
+    <Compile Include="Helpers\Randomizer\AgeRanges.cs" />
+    <Compile Include="Helpers\Randomizer\CasingRules.cs" />
+    <Compile Include="Helpers\Randomizer\Data.cs" />
+    <Compile Include="Helpers\Randomizer\Extensions.cs" />
+    <Compile Include="Helpers\Randomizer\RUtils.cs" />
     <Compile Include="Helpers\ReferenceFix.cs" />
+    <Compile Include="Helpers\VersionConverter.cs" />
     <Compile Include="Mods\ModSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
@@ -257,10 +278,9 @@
     <Compile Include="Helpers\ApplicationResourcesUtility.cs" />
     <Compile Include="Helpers\MainRedirect.cs" />
     <Compile Include="Helpers\MersenneTwister.cs" />
-    <Compile Include="Helpers\Randomizer.cs" />
+    <Compile Include="Helpers\Randomizer\Randomizer.cs" />
     <Compile Include="Helpers\UniqueId.cs" />
     <Compile Include="Helpers\UniqueIdConverter.cs" />
-    <Compile Include="Helpers\VersionConverter.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Logging\LogEntry.cs" />
     <Compile Include="Logging\LogEntryColor.cs" />
@@ -270,15 +290,14 @@
     <Compile Include="Logging\Loggers\GameLogger.cs" />
     <Compile Include="Logging\Loggers\ILogger.cs" />
     <Compile Include="Logging\Loggers\VisualStudioLogger.cs" />
-    <Compile Include="Menus\ChatBox.cs" />
-    <Compile Include="Menus\GameMenu.cs" />
-    <Compile Include="Menus\TitleMenu.cs" />
+    <Compile Include="Overrides\Menus\ChatBox.cs" />
+    <Compile Include="Overrides\Menus\GameMenu.cs" />
+    <Compile Include="Overrides\Menus\TitleMenu.cs" />
     <Compile Include="Mods\Mod.cs" />
     <Compile Include="Mods\ModLoader.cs" />
     <Compile Include="Mods\ModState.cs" />
     <Compile Include="Overrides\Characters\Monster.cs" />
     <Compile Include="Overrides\Game1.cs" />
-    <Compile Include="Overrides\SerializableDictionary.cs" />
     <Compile Include="Overrides\ShopMenu.cs" />
     <Compile Include="Overrides\StardewObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -296,7 +315,6 @@
     <Compile Include="Registries\Registry.cs" />
     <Compile Include="Registries\TextureRegistry.cs" />
     <Compile Include="Registries\XnbRegistry.cs" />
-    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\Machines\" />
@@ -307,9 +325,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if "$(ConfigurationName)" == "Release" (
-"$(SolutionDir)Tools\xml2json\xml2json.exe" "$(TargetDir)$(TargetName).xml" "$(SolutionDir)Documentation\$(ProjectName).json"
-)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

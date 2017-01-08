@@ -40,7 +40,7 @@ namespace TestMailMod
                             return null;
 
                         return _.Key;
-                    }).ToArray();
+                    }).Where(n => n != null).ToArray();
                     Game1.player.mailForTomorrow.AddRange(mail);
                     Game1.drawObjectDialogue($"Mail Sent: {string.Join(", ", mail)}");
                 }
@@ -107,9 +107,12 @@ namespace TestMailMod
 
             Mail.RegisterMail(new MailInformation
             {
-                Id = "testMod_CookingAttachment",
+                Id = "testMod_CookingAttachment2",
                 Message = "Here's some cooking recipe we found for you^  ???",
                 Attachment = new MailInformation.CookingAttachment()
+                {
+                    RecipeName = "Complete Breakfast"
+                }
             });
 
             Mail.RegisterMail(new MailInformation
